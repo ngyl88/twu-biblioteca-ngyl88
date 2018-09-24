@@ -17,10 +17,11 @@ public class BookTest {
 
     @Test
     public void shouldReturnBookDetailsAsString() {
-        StringBuilder expected = new StringBuilder();
-        expected.append("Title: " + TITLE);
-        expected.append("\t\t\tAuthor: " + AUTHOR);
-        expected.append("\t\t\tYear Published: " + YEAR);
+        StringBuilder expectedSB = new StringBuilder();
+        expectedSB.append("Title: " + TITLE);
+        expectedSB.append("\t\t\tAuthor: " + AUTHOR);
+        expectedSB.append("\t\t\tYear Published: " + YEAR);
+        String expected = expectedSB.toString();
 
         Book book = createBookForTest();
         assertEquals(book.getBookDetails(), expected);
