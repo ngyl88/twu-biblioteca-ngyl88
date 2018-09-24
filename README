@@ -27,3 +27,19 @@ Instructions to open your code in Intellij
 2. Select the directory containing the code
 DONE !
 
+
+
+User Stories
+==========================================
+#1  Welcome Message
+#2  List Books
+#3  Book Details
+#4  Main Menu
+#5  Invalid Menu Option
+#6  Quite
+#7  Checkout Book
+#8  Successful Checkout
+#9  Unsuccessful Checkout
+#10 Return Book
+#11 Successful Return
+#12 Unsuccessful Return
