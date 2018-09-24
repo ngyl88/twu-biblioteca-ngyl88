@@ -18,4 +18,10 @@ public class BookListTest {
         assertTrue("No book loaded",bookList.getBooks().size() > 0);
     }
 
+    @Test
+    public void shouldBeAbleToPrintBookList() {
+        BookList bookList = new BookList();
+        assertNotEquals(bookList.getBookListDetails(), "");
+    }
+
 }
