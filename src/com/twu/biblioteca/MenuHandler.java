@@ -19,6 +19,8 @@ public class MenuHandler {
     }
 
     public MenuHandler() {
-        this.options.put("1", "List Books");
+        for (MenuOption option : MenuOption.values()) {
+            this.options.put(option.getOptionKey(), option.getOptionDescription());
+        }
     }
 }

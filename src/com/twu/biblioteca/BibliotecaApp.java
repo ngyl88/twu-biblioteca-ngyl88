@@ -17,7 +17,7 @@ public class BibliotecaApp {
 
         String userOption = InputUtils.getUserOptionAsString();
 
-        if(userOption.equals("1")) {
+        if(userOption.equals(MenuOption.LIST_BOOK.getOptionKey())) {
             System.out.println("Book List:");
             System.out.println(bookList.getBookListDetailsAsString());
         }
