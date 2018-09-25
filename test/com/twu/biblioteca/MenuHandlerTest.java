@@ -16,4 +16,11 @@ public class MenuHandlerTest {
         assertTrue(new MenuHandler().getOptions().containsValue("List Books"));
     }
 
+    @Test
+    public void shouldBeAbleToReturnOptionListAsString() {
+        MenuHandler menuHandler = new MenuHandler();
+        assertNotEquals(menuHandler.getOptionListAsString(), "");
+        System.out.println(menuHandler.getOptionListAsString());
+    }
+
 }

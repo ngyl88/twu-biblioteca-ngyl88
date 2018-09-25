@@ -14,11 +14,11 @@ public class BibliotecaApp {
 
         // #4: display menu options
         System.out.println("Options:");
-        //System.out.println(menuHandler.getOptionListAsString());
+        System.out.println(menuHandler.getOptionListAsString());
 
         // #4: get user options
 
         System.out.println("Book List:");
-        System.out.println(bookList.getBookListDetails());
+        System.out.println(bookList.getBookListDetailsAsString());
     }
 }
