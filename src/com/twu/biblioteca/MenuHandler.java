@@ -20,6 +20,7 @@ public class MenuHandler {
         StringBuilder sb = new StringBuilder();
         getOptions().forEach((k, v) -> {
             sb.append(String.format("%3s%s%s", k, " - ", v));
+            sb.append(System.lineSeparator());
         });
         return sb.toString();
     }
