@@ -19,9 +19,9 @@ public class BookListTest {
     }
 
     @Test
-    public void shouldBeAbleToPrintBookList() {
+    public void shouldBeAbleToReturnBookListAsString() {
         BookList bookList = new BookList();
-        assertNotEquals(bookList.getBookListDetails(), "");
+        assertNotEquals(bookList.getBookListDetailsAsString(), "");
     }
 
 }
