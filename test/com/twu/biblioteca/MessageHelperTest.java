@@ -7,6 +7,11 @@ public class MessageHelperTest {
 
     @Test
     public void shouldReturnWelcomeMessage() {
-        assertEquals(new MessageHelper().getWelcomeMessage(), "Welcome to Biblioteca");
+        assertEquals(MessageHelper.getWelcomeMessage(), "Welcome to Biblioteca");
+    }
+
+    @Test
+    public void shouldReturnMessageForInvalidMenuOption() {
+        assertEquals(MessageHelper.getMessageForInvalidMenuOption(), "Select a valid option!");
     }
 }
