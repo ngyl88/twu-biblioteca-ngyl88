@@ -12,9 +12,11 @@ public class BibliotecaApp {
 
         String userOption = getUserOption();
 
-        if(userOption.equals(MenuOption.QUIT.getOptionKey())) {
+        if(MenuOption.isQuit(userOption)) {
             exitApp();
-        } else if(userOption.equals(MenuOption.LIST_BOOK.getOptionKey())) {
+        }
+
+        if(MenuOption.isListBook(userOption)) {
             displayForSelection("Book List:", bookList.getBookListDetailsAsString());
         }
 

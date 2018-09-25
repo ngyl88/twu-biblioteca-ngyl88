@@ -4,6 +4,14 @@ public enum MenuOption {
     LIST_BOOK("1", "List Books"),
     QUIT("q", "Quit");
 
+    public static boolean isQuit(String userOption) {
+        return QUIT.getOptionKey().equals(userOption);
+    }
+
+    public static boolean isListBook(String userOption) {
+        return LIST_BOOK.getOptionKey().equals(userOption);
+    }
+
     public String getOptionKey() {
         return optionKey;
     }
