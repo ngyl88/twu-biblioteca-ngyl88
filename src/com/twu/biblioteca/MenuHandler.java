@@ -10,6 +10,12 @@ public class MenuHandler {
         return options;
     }
 
+    public MenuHandler() {
+        for (MenuOption option : MenuOption.values()) {
+            this.options.put(option.getOptionKey(), option.getOptionDescription());
+        }
+    }
+
     public String getOptionListAsString() {
         StringBuilder sb = new StringBuilder();
         getOptions().forEach((k, v) -> {
@@ -18,9 +24,7 @@ public class MenuHandler {
         return sb.toString();
     }
 
-    public MenuHandler() {
-        for (MenuOption option : MenuOption.values()) {
-            this.options.put(option.getOptionKey(), option.getOptionDescription());
-        }
+    public boolean isInvalidOption(String userOption) {
+        return !getOptions().containsKey(userOption);
     }
 }
