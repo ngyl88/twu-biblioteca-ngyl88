@@ -3,6 +3,9 @@ package com.twu.biblioteca;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.twu.biblioteca.DisplayUtils.promptMessage;
+import static com.twu.biblioteca.InputUtils.getInputFromUser;
+
 public class MenuHandler {
     private Map<String, String> options = new HashMap<>();
 
@@ -25,7 +28,19 @@ public class MenuHandler {
         return sb.toString();
     }
 
-    public boolean isInvalidOption(String userOption) {
+    private boolean isInvalidOption(String userOption) {
         return !getOptions().containsKey(userOption);
     }
+
+    // TODO: FUNCTION NOT TESTED (moved from main)
+    public String getValidMenuOption() {
+        String userOption = getInputFromUser("Please enter your option: ");
+
+        while (isInvalidOption(userOption)) {
+            promptMessage(MessageHelper.getMessageForInvalidMenuOption());
+            userOption = getInputFromUser("Please enter your option: ");
+        }
+        return userOption;
+    }
+
 }

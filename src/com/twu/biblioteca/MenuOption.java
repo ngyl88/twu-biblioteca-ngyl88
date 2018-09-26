@@ -22,6 +22,10 @@ public enum MenuOption {
         return RETURN_BOOK.getOptionKey().equals(userOption);
     }
 
+    public static boolean isMeantForBooks(String userOption) {
+        return isListBook(userOption) || isCheckoutBook(userOption) || isReturnBook(userOption);
+    }
+
     public String getOptionKey() {
         return optionKey;
     }

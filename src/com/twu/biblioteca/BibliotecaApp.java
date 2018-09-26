@@ -5,62 +5,28 @@ import static com.twu.biblioteca.DisplayUtils.promptMessage;
 import static com.twu.biblioteca.InputUtils.getInputFromUser;
 
 public class BibliotecaApp {
-    private static final BookList bookList = new BookList();
 
     private static final MenuHandler menuHandler = new MenuHandler();
+
+    private static final BookListHandler bookListHandler = new BookListHandler();
 
     public static void main(String[] args) {
 
         promptMessage(MessageHelper.getWelcomeMessage());
+        displayInformationWithHeader("Options:", menuHandler.getOptionListAsString());
 
         initializeApp();
 
-        displayInformationWithHeader("Options:", menuHandler.getOptionListAsString());
-
-        String userOption = getUserOptionForMenuOption();
+        String userOption = menuHandler.getValidMenuOption();
 
         while (!MenuOption.isQuit(userOption)) {
-
-            if (MenuOption.isListBook(userOption)) {
-                displayInformationWithHeader("Book List:", bookList.getBookListDetailsAsString());
-            } else if (MenuOption.isCheckoutBook(userOption)) {
-                handleBookCheckout();
-            } else if (MenuOption.isReturnBook(userOption)) {
-                handleBookReturn();
+            if (MenuOption.isMeantForBooks(userOption)) {
+                bookListHandler.handleUserOption(userOption);
             }
-
-            userOption = getUserOptionForMenuOption();
+            userOption = menuHandler.getValidMenuOption();
         }
 
         exitApp();
-    }
-
-    private static void handleBookReturn() {
-        String bookTitle = getInputFromUser("Please enter book title: ");
-        if (bookList.returnBook(bookTitle)) {
-            promptMessage(MessageHelper.getMessageForSuccessBookReturn());
-        } else {
-            promptMessage(MessageHelper.getMessageForFailedBookReturn());
-        }
-    }
-
-    private static void handleBookCheckout() {
-        String bookTitle = getInputFromUser("Please enter book title: ");
-        if (bookList.checkoutBookByTitle(bookTitle)) {
-            promptMessage(MessageHelper.getMessageForSuccessBookCheckout());
-        } else {
-            promptMessage(MessageHelper.getMessageForFailedBookCheckout());
-        }
-    }
-
-    private static String getUserOptionForMenuOption() {
-        String userOption = getInputFromUser("Please enter your option: ");
-
-        while (menuHandler.isInvalidOption(userOption)) {
-            promptMessage(MessageHelper.getMessageForInvalidMenuOption());
-            userOption = getInputFromUser("Please enter your option: ");
-        }
-        return userOption;
     }
 
     private static void exitApp() {

@@ -18,6 +18,7 @@ public class MenuOptionTest {
 
     @Test
     public void shouldReturnTrueIfListBook() {
+        assertTrue(MenuOption.isMeantForBooks("1"));
         assertTrue(MenuOption.isListBook("1"));
     }
 
@@ -28,6 +29,7 @@ public class MenuOptionTest {
 
     @Test
     public void shouldReturnTrueIfCheckoutBook() {
+        assertTrue(MenuOption.isMeantForBooks("2"));
         assertTrue(MenuOption.isCheckoutBook("2"));
     }
 
@@ -38,12 +40,18 @@ public class MenuOptionTest {
 
     @Test
     public void shouldReturnTrueIfReturnBook() {
+        assertTrue(MenuOption.isMeantForBooks("3"));
         assertTrue(MenuOption.isReturnBook("3"));
     }
 
     @Test
     public void shouldReturnFalseIfNotReturnBook() {
         assertFalse(MenuOption.isReturnBook("q"));
+    }
+
+    @Test
+    public void shouldReturnFalseForOtherOptionThanBook() {
+        assertFalse(MenuOption.isMeantForBooks("q"));
     }
 
 }
