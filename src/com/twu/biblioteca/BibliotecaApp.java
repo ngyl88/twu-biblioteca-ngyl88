@@ -18,6 +18,10 @@ public class BibliotecaApp {
 
         if(MenuOption.isListBook(userOption)) {
             displayForSelection("Book List:", bookList.getBookListDetailsAsString());
+        } else if(MenuOption.isCheckoutBook(userOption)) {
+            // TODO #7
+            //String bookTitle = getUserOption();
+            //bookList.checkoutByBookTitle(bookTitle);
         }
 
         exitApp();

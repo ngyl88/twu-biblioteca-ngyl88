@@ -18,8 +18,10 @@ public class BookList {
     public String getBookListDetailsAsString() {
         StringBuilder sb = new StringBuilder();
         for (Book book : books) {
-            sb.append(book.getBookDetails());
-            sb.append(System.lineSeparator());
+            if (book.isAvailable()) {
+                sb.append(book.getBookDetails());
+                sb.append(System.lineSeparator());
+            }
         }
         sb.append(System.lineSeparator());
 

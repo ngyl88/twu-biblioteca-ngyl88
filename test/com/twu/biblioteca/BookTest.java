@@ -27,6 +27,19 @@ public class BookTest {
         assertEquals(book.getBookDetails(), expected);
     }
 
+    @Test
+    public void newBookShouldBeAvailable() {
+        Book book = createBookForTest();
+        assertTrue(book.isAvailable());
+    }
+
+    @Test
+    public void checkoutBookShouldNotBeAvailable() {
+        Book book = createBookForTest();
+        book.checkout();
+        assertFalse(book.isAvailable());
+    }
+
     private Book createBookForTest() {
         return new Book(TITLE, AUTHOR, YEAR);
     }

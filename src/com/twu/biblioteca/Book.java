@@ -2,9 +2,14 @@ package com.twu.biblioteca;
 
 public class Book {
 
+    public boolean isAvailable() {
+        return available;
+    }
+
     private final String title;
     private final String author;
     private final int yearPublished;
+    private boolean available = true;
 
     public Book(String title, String author, int yearPublished) {
         this.title = title;
@@ -19,5 +24,9 @@ public class Book {
         expectedSB.append("\t\t\tYear Published: " + this.yearPublished);
 
         return expectedSB.toString();
+    }
+
+    public void checkout() {
+        this.available = false;
     }
 }
