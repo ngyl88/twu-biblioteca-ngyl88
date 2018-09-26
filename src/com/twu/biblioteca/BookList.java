@@ -23,8 +23,15 @@ public class BookList {
                 sb.append(System.lineSeparator());
             }
         }
-        sb.append(System.lineSeparator());
-
         return sb.toString();
+    }
+
+    public void checkoutBookByTitle(String title) {
+        for (Book book: books) {
+            if (book.getTitle().equals(title)) {
+                book.checkout();
+                break;
+            }
+        }
     }
 }

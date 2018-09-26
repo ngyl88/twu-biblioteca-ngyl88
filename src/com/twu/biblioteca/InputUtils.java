@@ -12,8 +12,8 @@ public class InputUtils {
         }
     }
 
-    public static String getUserOptionAsString() {
-        System.out.print("Please enter your option: ");
+    public static String getUserOptionAsString(String instruction) {
+        System.out.print(instruction);
         return in.nextLine();
     }
 

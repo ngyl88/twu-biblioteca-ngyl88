@@ -6,6 +6,10 @@ public class Book {
         return available;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     private final String title;
     private final String author;
     private final int yearPublished;

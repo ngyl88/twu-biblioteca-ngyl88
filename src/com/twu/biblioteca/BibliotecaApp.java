@@ -10,29 +10,33 @@ public class BibliotecaApp {
 
         displayForSelection("Options:", menuHandler.getOptionListAsString());
 
-        String userOption = getUserOption();
+        String userOption = getUserOptionForMenuOption();
 
-        if(MenuOption.isQuit(userOption)) {
-            exitApp();
-        }
+        while (!MenuOption.isQuit(userOption)) {
 
-        if(MenuOption.isListBook(userOption)) {
-            displayForSelection("Book List:", bookList.getBookListDetailsAsString());
-        } else if(MenuOption.isCheckoutBook(userOption)) {
-            // TODO #7
-            //String bookTitle = getUserOption();
-            //bookList.checkoutByBookTitle(bookTitle);
+            if (MenuOption.isListBook(userOption)) {
+                displayForSelection("Book List:", bookList.getBookListDetailsAsString());
+            } else if (MenuOption.isCheckoutBook(userOption)) {
+                handleBookCheckout();
+            }
+
+            userOption = getUserOptionForMenuOption();
         }
 
         exitApp();
     }
 
-    private static String getUserOption() {
-        String userOption = InputUtils.getUserOptionAsString();
+    private static void handleBookCheckout() {
+        String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
+        bookList.checkoutBookByTitle(bookTitle);
+    }
 
-        while(menuHandler.isInvalidOption(userOption)) {
+    private static String getUserOptionForMenuOption() {
+        String userOption = InputUtils.getUserOptionAsString("Please enter your option: ");
+
+        while (menuHandler.isInvalidOption(userOption)) {
             printLine(MessageHelper.getMessageForInvalidMenuOption());
-            userOption = InputUtils.getUserOptionAsString();
+            userOption = InputUtils.getUserOptionAsString("Please enter your option: ");
         }
         return userOption;
     }
