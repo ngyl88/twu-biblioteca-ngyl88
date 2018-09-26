@@ -41,6 +41,14 @@ public class BookListTest {
         assertTrue(success);
     }
 
+    @Test
+    public void shouldReturnFalseUponUnsuccessfulCheckout() {
+        BookList bookList = createAndInitializeBookList();
+
+        boolean success = bookList.checkoutBookByTitle("Some Invalid Book");
+        assertFalse(success);
+    }
+
     private Book getFirstAvailableBook(BookList bookList) {
         Book firstBook = bookList.getBooks().get(0);
         assertTrue(firstBook.isAvailable());

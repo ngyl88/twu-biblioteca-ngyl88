@@ -27,11 +27,14 @@ public class BookList {
     }
 
     public boolean checkoutBookByTitle(String title) {
+        boolean found = false;
         for (Book book: books) {
             if (book.getTitle().equals(title)) {
                 book.checkout();
+                found = true;
+                break;
             }
         }
-        return true;
+        return found;
     }
 }

@@ -19,4 +19,9 @@ public class MessageHelperTest {
     public void shouldReturnMessageForSuccessfulBookCheckout() {
         assertEquals(MessageHelper.getMessageForSuccessBookCheckout(), "Thank you! Enjoy the book");
     }
+
+    @Test
+    public void shouldReturnMessageForUnsuccessfulBookCheckout() {
+        assertEquals(MessageHelper.getMessageForFailedBookCheckout(), "That book is not available.");
+    }
 }

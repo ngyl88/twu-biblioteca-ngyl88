@@ -12,4 +12,8 @@ public class MessageHelper {
     public static String getMessageForSuccessBookCheckout() {
         return "Thank you! Enjoy the book";
     }
+
+    public static String getMessageForFailedBookCheckout() {
+        return "That book is not available.";
+    }
 }

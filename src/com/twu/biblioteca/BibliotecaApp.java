@@ -30,6 +30,8 @@ public class BibliotecaApp {
         String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
         if(bookList.checkoutBookByTitle(bookTitle)) {
             printLine(MessageHelper.getMessageForSuccessBookCheckout());
+        } else {
+            printLine(MessageHelper.getMessageForFailedBookCheckout());
         }
     }
 
