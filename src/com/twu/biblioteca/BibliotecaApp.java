@@ -1,21 +1,28 @@
 package com.twu.biblioteca;
 
+import static com.twu.biblioteca.DisplayUtils.displayInformationWithHeader;
+import static com.twu.biblioteca.DisplayUtils.promptMessage;
+import static com.twu.biblioteca.InputUtils.getInputFromUser;
+
 public class BibliotecaApp {
     private static final BookList bookList = new BookList();
 
     private static final MenuHandler menuHandler = new MenuHandler();
 
     public static void main(String[] args) {
+
+        promptMessage(MessageHelper.getWelcomeMessage());
+
         initializeApp();
 
-        displayForSelection("Options:", menuHandler.getOptionListAsString());
+        displayInformationWithHeader("Options:", menuHandler.getOptionListAsString());
 
         String userOption = getUserOptionForMenuOption();
 
         while (!MenuOption.isQuit(userOption)) {
 
             if (MenuOption.isListBook(userOption)) {
-                displayForSelection("Book List:", bookList.getBookListDetailsAsString());
+                displayInformationWithHeader("Book List:", bookList.getBookListDetailsAsString());
             } else if (MenuOption.isCheckoutBook(userOption)) {
                 handleBookCheckout();
             } else if (MenuOption.isReturnBook(userOption)) {
@@ -29,36 +36,31 @@ public class BibliotecaApp {
     }
 
     private static void handleBookReturn() {
-        String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
+        String bookTitle = getInputFromUser("Please enter book title: ");
         if (bookList.returnBook(bookTitle)) {
-            printLine(MessageHelper.getMessageForSuccessBookReturn());
+            promptMessage(MessageHelper.getMessageForSuccessBookReturn());
         } else {
-            printLine(MessageHelper.getMessageForFailedBookReturn());
+            promptMessage(MessageHelper.getMessageForFailedBookReturn());
         }
     }
 
     private static void handleBookCheckout() {
-        String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
+        String bookTitle = getInputFromUser("Please enter book title: ");
         if (bookList.checkoutBookByTitle(bookTitle)) {
-            printLine(MessageHelper.getMessageForSuccessBookCheckout());
+            promptMessage(MessageHelper.getMessageForSuccessBookCheckout());
         } else {
-            printLine(MessageHelper.getMessageForFailedBookCheckout());
+            promptMessage(MessageHelper.getMessageForFailedBookCheckout());
         }
     }
 
     private static String getUserOptionForMenuOption() {
-        String userOption = InputUtils.getUserOptionAsString("Please enter your option: ");
+        String userOption = getInputFromUser("Please enter your option: ");
 
         while (menuHandler.isInvalidOption(userOption)) {
-            printLine(MessageHelper.getMessageForInvalidMenuOption());
-            userOption = InputUtils.getUserOptionAsString("Please enter your option: ");
+            promptMessage(MessageHelper.getMessageForInvalidMenuOption());
+            userOption = getInputFromUser("Please enter your option: ");
         }
         return userOption;
-    }
-
-    private static void displayForSelection(String type, String optionListAsString) {
-        printLine(type);
-        printLine(optionListAsString);
     }
 
     private static void exitApp() {
@@ -67,13 +69,7 @@ public class BibliotecaApp {
     }
 
     private static void initializeApp() {
-        printLine(MessageHelper.getWelcomeMessage());
-
         bookList.initialize();
         InputUtils.openStream();
-    }
-
-    private static void printLine(String welcomeMessage) {
-        System.out.println(welcomeMessage);
     }
 }

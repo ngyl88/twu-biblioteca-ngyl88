@@ -12,7 +12,7 @@ public class InputUtils {
         }
     }
 
-    public static String getUserOptionAsString(String instruction) {
+    public static String getInputFromUser(String instruction) {
         System.out.print(instruction);
         return in.nextLine();
     }
