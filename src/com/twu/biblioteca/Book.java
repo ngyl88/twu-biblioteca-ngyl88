@@ -23,7 +23,7 @@ public class Book {
 
     public String getBookDetails() {
         StringBuilder expectedSB = new StringBuilder();
-        expectedSB.append("Title: " + this.title);
+        expectedSB.append("- Title: " + this.title);
         expectedSB.append("\t\t\tAuthor: " + this.author);
         expectedSB.append("\t\t\tYear Published: " + this.yearPublished);
 

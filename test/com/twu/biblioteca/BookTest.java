@@ -18,7 +18,7 @@ public class BookTest {
     @Test
     public void shouldReturnBookDetailsAsString() {
         StringBuilder expectedSB = new StringBuilder();
-        expectedSB.append("Title: " + TITLE);
+        expectedSB.append("- Title: " + TITLE);
         expectedSB.append("\t\t\tAuthor: " + AUTHOR);
         expectedSB.append("\t\t\tYear Published: " + YEAR);
         String expected = expectedSB.toString();
