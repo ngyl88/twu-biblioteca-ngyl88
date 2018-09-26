@@ -67,6 +67,15 @@ public class BookListTest {
         assertTrue(bookCheckedOut.isAvailable());
     }
 
+    @Test
+    public void shouldReturnTrueUponSuccessfulReturn() {
+        BookList bookList = createAndInitializeBookList();
+        Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
+
+        boolean success = bookList.returnBook(bookCheckedOut.getTitle());
+        assertTrue(success);
+    }
+
     private Book generateCheckedOutBookFromBookList(BookList bookList) {
         Book firstBook = getFirstAvailableBook(bookList);
 

@@ -38,12 +38,13 @@ public class BookList {
         return found;
     }
 
-    public void returnBook(String title) {
+    public boolean returnBook(String title) {
         for (Book book: books) {
             if (book.getTitle().equals(title)) {
                 book.returned();
                 break;
             }
         }
+        return true;
     }
 }

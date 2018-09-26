@@ -30,12 +30,14 @@ public class BibliotecaApp {
 
     private static void handleBookReturn() {
         String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
-        bookList.returnBook(bookTitle);
+        if (bookList.returnBook(bookTitle)) {
+            printLine(MessageHelper.getMessageForSuccessBookReturn());
+        }
     }
 
     private static void handleBookCheckout() {
         String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
-        if(bookList.checkoutBookByTitle(bookTitle)) {
+        if (bookList.checkoutBookByTitle(bookTitle)) {
             printLine(MessageHelper.getMessageForSuccessBookCheckout());
         } else {
             printLine(MessageHelper.getMessageForFailedBookCheckout());
