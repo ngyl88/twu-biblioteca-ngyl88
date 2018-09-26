@@ -40,6 +40,15 @@ public class BookTest {
         assertFalse(book.isAvailable());
     }
 
+    @Test
+    public void returnedBookShouldBeAvailable() {
+        Book book = createBookForTest();
+        book.checkout();
+
+        book.returned();
+        assertTrue(book.isAvailable());
+    }
+
     private Book createBookForTest() {
         return new Book(TITLE, AUTHOR, YEAR);
     }

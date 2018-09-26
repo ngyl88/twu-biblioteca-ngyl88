@@ -33,4 +33,8 @@ public class Book {
     public void checkout() {
         this.available = false;
     }
+
+    public void returned() {
+        this.available = true;
+    }
 }

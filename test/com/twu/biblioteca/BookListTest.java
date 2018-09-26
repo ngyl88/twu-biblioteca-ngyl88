@@ -49,6 +49,24 @@ public class BookListTest {
         assertFalse(success);
     }
 
+    @Test
+    public void shouldBeAbleToReturnBookByTitle() {
+        BookList bookList = createAndInitializeBookList();
+        Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
+
+        bookList.returnBook(bookCheckedOut.getTitle());
+        assertTrue(bookCheckedOut.isAvailable());
+    }
+
+    private Book generateCheckedOutBookFromBookList(BookList bookList) {
+        Book firstBook = getFirstAvailableBook(bookList);
+
+        bookList.checkoutBookByTitle(firstBook.getTitle());
+        assertFalse(firstBook.isAvailable());
+
+        return firstBook;
+    }
+
     private Book getFirstAvailableBook(BookList bookList) {
         Book firstBook = bookList.getBooks().get(0);
         assertTrue(firstBook.isAvailable());

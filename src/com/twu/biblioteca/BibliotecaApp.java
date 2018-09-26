@@ -18,12 +18,19 @@ public class BibliotecaApp {
                 displayForSelection("Book List:", bookList.getBookListDetailsAsString());
             } else if (MenuOption.isCheckoutBook(userOption)) {
                 handleBookCheckout();
+            } else if (MenuOption.isReturnBook(userOption)) {
+                handleBookReturn();
             }
 
             userOption = getUserOptionForMenuOption();
         }
 
         exitApp();
+    }
+
+    private static void handleBookReturn() {
+        String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
+        bookList.returnBook(bookTitle);
     }
 
     private static void handleBookCheckout() {

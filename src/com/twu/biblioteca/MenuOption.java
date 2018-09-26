@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 public enum MenuOption {
     LIST_BOOK("1", "List Books"),
     CHECKOUT_BOOK("2", "Checkout Book"),
+    RETURN_BOOK("3", "Return Book"),
     QUIT("q", "Quit");
 
     public static boolean isQuit(String userOption) {
@@ -15,6 +16,10 @@ public enum MenuOption {
 
     public static boolean isCheckoutBook(String userOption) {
         return CHECKOUT_BOOK.getOptionKey().equals(userOption);
+    }
+
+    public static boolean isReturnBook(String userOption) {
+        return RETURN_BOOK.getOptionKey().equals(userOption);
     }
 
     public String getOptionKey() {
