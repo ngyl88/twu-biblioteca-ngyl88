@@ -7,25 +7,20 @@ import static org.junit.Assert.*;
 public class BookListTest {
 
     @Test
-    public void shouldBeCreatedWithEmptyBookList() {
-        assertTrue(new BookList().getBooks().size() == 0);
-    }
-
-    @Test
-    public void shouldLoadPreExistingBook() {
-        BookList bookList = createAndInitializeBookList();
-        assertTrue("No book loaded",bookList.getBooks().size() > 0);
+    public void shouldLoadBooksWhenConstructed() {
+        BookList bookList = new BookList();
+        assertTrue(bookList.getBooks().size() > 0);
     }
 
     @Test
     public void shouldBeAbleToReturnBookListAsString() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
         assertNotEquals(bookList.getBookListDetailsAsString(), "");
     }
 
     @Test
     public void shouldBeAbleToCheckoutBookByTitle() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
         Book firstBook = getFirstAvailableBook(bookList);
 
         bookList.checkoutBookByTitle(firstBook.getTitle());
@@ -34,7 +29,7 @@ public class BookListTest {
 
     @Test
     public void shouldReturnTrueUponSuccessfulCheckout() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
         Book firstBook = getFirstAvailableBook(bookList);
 
         boolean success = bookList.checkoutBookByTitle(firstBook.getTitle());
@@ -43,7 +38,7 @@ public class BookListTest {
 
     @Test
     public void shouldReturnFalseUponUnsuccessfulCheckoutOfAnInvalidBook() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
 
         boolean success = bookList.checkoutBookByTitle("Some Invalid Book");
         assertFalse(success);
@@ -51,7 +46,7 @@ public class BookListTest {
 
     @Test
     public void shouldReturnFalseIfAttemptedToRepeatedlyCheckoutABook() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
 
         boolean success = bookList.checkoutBookByTitle(bookCheckedOut.getTitle());
@@ -60,7 +55,7 @@ public class BookListTest {
 
     @Test
     public void shouldBeAbleToReturnBookByTitle() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
 
         bookList.returnBook(bookCheckedOut.getTitle());
@@ -69,7 +64,7 @@ public class BookListTest {
 
     @Test
     public void shouldReturnTrueUponSuccessfulReturn() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
 
         boolean success = bookList.returnBook(bookCheckedOut.getTitle());
@@ -78,7 +73,7 @@ public class BookListTest {
 
     @Test
     public void shouldReturnFalseUponUnsuccessfulReturnOfAnInvalidBook() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
 
         boolean success = bookList.returnBook("Some Invalid Book");
         assertFalse(success);
@@ -86,7 +81,7 @@ public class BookListTest {
 
     @Test
     public void shouldReturnFalseIfAttemptedToRepeatedlyReturnABook() {
-        BookList bookList = createAndInitializeBookList();
+        BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
         bookList.returnBook(bookCheckedOut.getTitle());
 
@@ -108,12 +103,6 @@ public class BookListTest {
         assertTrue(firstBook.isAvailable());
 
         return firstBook;
-    }
-
-    private BookList createAndInitializeBookList() {
-        BookList bookList = new BookList();
-        bookList.initialize();
-        return bookList;
     }
 
 }

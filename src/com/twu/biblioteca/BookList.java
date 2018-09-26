@@ -9,7 +9,7 @@ public class BookList {
         return books;
     }
 
-    public void initialize() {
+    public BookList() {
         books.add(new Book("Book 1", "Author 1", 2008));
         books.add(new Book("Book 2", "Author 1", 2009));
         books.add(new Book("Book 3", "Author 2", 2010));

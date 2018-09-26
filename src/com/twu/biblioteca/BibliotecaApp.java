@@ -69,7 +69,6 @@ public class BibliotecaApp {
     }
 
     private static void initializeApp() {
-        bookList.initialize();
         InputUtils.openStream();
     }
 }

@@ -31,6 +31,7 @@ DONE !
 
 User Stories
 ==========================================
+[Release 1] :
 #1  Welcome Message
 #2  List Books
 #3  Book Details
@@ -43,3 +44,9 @@ User Stories
 #10 Return Book
 #11 Successful Return
 #12 Unsuccessful Return
+
+[Release 2] :
+#13 List Movies
+#14 Checkout Movie
+#15 User Accounts - Login
+#16 User Accounts - User information
