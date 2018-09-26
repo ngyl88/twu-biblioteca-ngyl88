@@ -29,7 +29,7 @@ public class BookList {
     public boolean checkoutBookByTitle(String title) {
         boolean found = false;
         for (Book book: books) {
-            if (book.getTitle().equals(title)) {
+            if (book.getTitle().equals(title) && book.isAvailable()) {
                 book.checkout();
                 found = true;
                 break;

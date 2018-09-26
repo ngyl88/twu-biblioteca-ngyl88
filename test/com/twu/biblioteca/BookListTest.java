@@ -50,6 +50,15 @@ public class BookListTest {
     }
 
     @Test
+    public void shouldReturnFalseIfAttemptedToCheckoutABookThatWasCheckout() {
+        BookList bookList = createAndInitializeBookList();
+        Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
+
+        boolean success = bookList.checkoutBookByTitle(bookCheckedOut.getTitle());
+        assertFalse(success);
+    }
+
+    @Test
     public void shouldBeAbleToReturnBookByTitle() {
         BookList bookList = createAndInitializeBookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
