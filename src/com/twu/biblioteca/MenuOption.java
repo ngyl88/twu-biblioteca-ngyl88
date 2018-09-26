@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 public enum MenuOption {
     LIST_BOOK("1", "List Books"),
+    CHECKOUT_BOOK("2", "Checkout Book"),
     QUIT("q", "Quit");
 
     public static boolean isQuit(String userOption) {
@@ -10,6 +11,10 @@ public enum MenuOption {
 
     public static boolean isListBook(String userOption) {
         return LIST_BOOK.getOptionKey().equals(userOption);
+    }
+
+    public static boolean isCheckoutBook(String userOption) {
+        return CHECKOUT_BOOK.getOptionKey().equals(userOption);
     }
 
     public String getOptionKey() {

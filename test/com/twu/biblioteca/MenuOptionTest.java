@@ -22,8 +22,18 @@ public class MenuOptionTest {
     }
 
     @Test
-    public void shouldReturnFalseIfListBook() {
+    public void shouldReturnFalseIfNotListBook() {
         assertFalse(MenuOption.isListBook("q"));
+    }
+
+    @Test
+    public void shouldReturnTrueIfCheckoutBook() {
+        assertTrue(MenuOption.isCheckoutBook("2"));
+    }
+
+    @Test
+    public void shouldReturnFalseIfCheckoutBook() {
+        assertFalse(MenuOption.isCheckoutBook("q"));
     }
 
 }
