@@ -42,7 +42,7 @@ public class BookListTest {
     }
 
     @Test
-    public void shouldReturnFalseUponUnsuccessfulCheckout() {
+    public void shouldReturnFalseUponUnsuccessfulCheckoutOfAnInvalidBook() {
         BookList bookList = createAndInitializeBookList();
 
         boolean success = bookList.checkoutBookByTitle("Some Invalid Book");
@@ -50,7 +50,7 @@ public class BookListTest {
     }
 
     @Test
-    public void shouldReturnFalseIfAttemptedToCheckoutABookThatWasCheckout() {
+    public void shouldReturnFalseIfAttemptedToRepeatedlyCheckoutABook() {
         BookList bookList = createAndInitializeBookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
 
@@ -74,6 +74,24 @@ public class BookListTest {
 
         boolean success = bookList.returnBook(bookCheckedOut.getTitle());
         assertTrue(success);
+    }
+
+    @Test
+    public void shouldReturnFalseUponUnsuccessfulReturnOfAnInvalidBook() {
+        BookList bookList = createAndInitializeBookList();
+
+        boolean success = bookList.returnBook("Some Invalid Book");
+        assertFalse(success);
+    }
+
+    @Test
+    public void shouldReturnFalseIfAttemptedToRepeatedlyReturnABook() {
+        BookList bookList = createAndInitializeBookList();
+        Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
+        bookList.returnBook(bookCheckedOut.getTitle());
+
+        boolean success = bookList.returnBook(bookCheckedOut.getTitle());
+        assertFalse(success);
     }
 
     private Book generateCheckedOutBookFromBookList(BookList bookList) {

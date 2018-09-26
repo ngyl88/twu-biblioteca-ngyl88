@@ -32,6 +32,8 @@ public class BibliotecaApp {
         String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
         if (bookList.returnBook(bookTitle)) {
             printLine(MessageHelper.getMessageForSuccessBookReturn());
+        } else {
+            printLine(MessageHelper.getMessageForFailedBookReturn());
         }
     }
 

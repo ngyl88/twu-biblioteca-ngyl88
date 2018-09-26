@@ -39,12 +39,14 @@ public class BookList {
     }
 
     public boolean returnBook(String title) {
+        boolean found = false;
         for (Book book: books) {
-            if (book.getTitle().equals(title)) {
+            if (book.getTitle().equals(title) && !book.isAvailable()) {
                 book.returned();
+                found = true;
                 break;
             }
         }
-        return true;
+        return found;
     }
 }

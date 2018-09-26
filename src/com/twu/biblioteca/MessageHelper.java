@@ -20,4 +20,8 @@ public class MessageHelper {
     public static String getMessageForSuccessBookReturn() {
         return "Thank you for returning the book.";
     }
+
+    public static String getMessageForFailedBookReturn() {
+        return "That is not a valid book to return.";
+    }
 }

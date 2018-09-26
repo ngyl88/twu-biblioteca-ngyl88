@@ -29,4 +29,9 @@ public class MessageHelperTest {
     public void shouldReturnMessageForSuccessfulBookReturn() {
         assertEquals(MessageHelper.getMessageForSuccessBookReturn(), "Thank you for returning the book.");
     }
+
+    @Test
+    public void shouldReturnMessageForUnsuccessfulBookReturn() {
+        assertEquals(MessageHelper.getMessageForFailedBookReturn(), "That is not a valid book to return.");
+    }
 }
