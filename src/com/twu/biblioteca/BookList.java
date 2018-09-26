@@ -26,12 +26,12 @@ public class BookList {
         return sb.toString();
     }
 
-    public void checkoutBookByTitle(String title) {
+    public boolean checkoutBookByTitle(String title) {
         for (Book book: books) {
             if (book.getTitle().equals(title)) {
                 book.checkout();
-                break;
             }
         }
+        return true;
     }
 }

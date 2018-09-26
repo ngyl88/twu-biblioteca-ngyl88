@@ -8,4 +8,8 @@ public class MessageHelper {
     public static String getMessageForInvalidMenuOption() {
         return "Select a valid option!";
     }
+
+    public static String getMessageForSuccessBookCheckout() {
+        return "Thank you! Enjoy the book";
+    }
 }

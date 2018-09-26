@@ -14,4 +14,9 @@ public class MessageHelperTest {
     public void shouldReturnMessageForInvalidMenuOption() {
         assertEquals(MessageHelper.getMessageForInvalidMenuOption(), "Select a valid option!");
     }
+
+    @Test
+    public void shouldReturnMessageForSuccessfulBookCheckout() {
+        assertEquals(MessageHelper.getMessageForSuccessBookCheckout(), "Thank you! Enjoy the book");
+    }
 }

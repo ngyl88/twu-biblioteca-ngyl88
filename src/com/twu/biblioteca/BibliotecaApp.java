@@ -28,7 +28,9 @@ public class BibliotecaApp {
 
     private static void handleBookCheckout() {
         String bookTitle = InputUtils.getUserOptionAsString("Please enter book title: ");
-        bookList.checkoutBookByTitle(bookTitle);
+        if(bookList.checkoutBookByTitle(bookTitle)) {
+            printLine(MessageHelper.getMessageForSuccessBookCheckout());
+        }
     }
 
     private static String getUserOptionForMenuOption() {
