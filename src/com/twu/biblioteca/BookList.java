@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class BookList {
-    private ArrayList<Book> books = new ArrayList<Book>();
+    private ArrayList<Book> books = new ArrayList<>();
 
     public ArrayList<Book> getBooks() {
         return books;
@@ -27,26 +27,22 @@ public class BookList {
     }
 
     public boolean checkoutBookByTitle(String title) {
-        boolean found = false;
-        for (Book book: books) {
+        for (Book book : books) {
             if (book.getTitle().equals(title) && book.isAvailable()) {
                 book.checkout();
-                found = true;
-                break;
+                return true;
             }
         }
-        return found;
+        return false;
     }
 
     public boolean returnBook(String title) {
-        boolean found = false;
-        for (Book book: books) {
+        for (Book book : books) {
             if (book.getTitle().equals(title) && !book.isAvailable()) {
                 book.returned();
-                found = true;
-                break;
+                return true;
             }
         }
-        return found;
+        return false;
     }
 }
