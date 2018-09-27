@@ -25,7 +25,7 @@ public class BookListHandler {
         }
     }
 
-    // TODO: FUNCTION NOT TESTED (support main)
+    // TODO: UNIT TEST NOT CREATED (support main)
     public void handleUserOption(String userOption) {
 
         if (MenuOption.LIST_BOOK.keyMatches(userOption)) {

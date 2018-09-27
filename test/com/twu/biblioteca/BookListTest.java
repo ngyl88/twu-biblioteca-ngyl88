@@ -28,6 +28,13 @@ public class BookListTest {
     }
 
     @Test
+    public void stringRepresentationShouldNotContainUnavailableBook() {
+        BookList bookList = new BookList();
+        Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
+        assertFalse(bookList.getAvailableBookListDetailsAsString().contains(bookCheckedOut.getTitle()));
+    }
+
+    @Test
     public void shouldReturnTrueUponSuccessfulCheckout() {
         BookList bookList = new BookList();
         Book firstBook = getFirstAvailableBook(bookList);

@@ -3,11 +3,12 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class BookList {
-    private ArrayList<Book> books = new ArrayList<>();
 
     public ArrayList<Book> getBooks() {
         return books;
     }
+
+    private ArrayList<Book> books = new ArrayList<>();
 
     public BookList() {
         books.add(new Book("Book 1", "Author 1", 2008));
