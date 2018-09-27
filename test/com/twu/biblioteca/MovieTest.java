@@ -1,0 +1,62 @@
+package com.twu.biblioteca;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class MovieTest {
+
+    private static final String NAME = "Movie Name for Testing";
+    private static final String DIRECTOR = "Anonymous";
+    private static final int YEAR = 2008;
+
+    @Test
+    public void shouldCreateNewMovieWithNameYearDirector() {
+        assertNotNull(new Movie(NAME, YEAR, DIRECTOR));
+    }
+
+    @Test
+    public void newMovieShouldHaveCorrectName() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        assertEquals(NAME, movie.getName());
+    }
+
+    @Test
+    public void newMovieShouldHaveCorrectYear() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        assertEquals(YEAR, movie.getYear());
+    }
+
+    @Test
+    public void newMovieShouldHaveCorrectDirector() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        assertEquals(DIRECTOR, movie.getDirector());
+    }
+
+    @Test
+    public void newMovieShouldHaveRatingUnrated() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        assertNull(movie.getRating());
+    }
+
+    @Test
+    public void shouldBeAbleToSetMovieRatingTo1() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        movie.setRating(1);
+        assertTrue(movie.getRating() == 1);
+    }
+
+    @Test
+    public void shouldNotBeAbleToSetMovieRatingTo0() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        movie.setRating(0);
+        assertNull(movie.getRating());
+    }
+
+    @Test
+    public void shouldNotBeAbleToSetMovieRatingTo11() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        movie.setRating(11);
+        assertNull(movie.getRating());
+    }
+}

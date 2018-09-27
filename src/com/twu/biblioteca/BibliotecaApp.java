@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import static com.twu.biblioteca.DisplayUtils.displayInformationWithHeader;
 import static com.twu.biblioteca.DisplayUtils.promptMessage;
-import static com.twu.biblioteca.InputUtils.getInputFromUser;
 
 public class BibliotecaApp {
 
