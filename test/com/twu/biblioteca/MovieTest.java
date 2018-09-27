@@ -91,4 +91,11 @@ public class MovieTest {
         expectedSB.append("\t\t\tRating: " + rating);
         return expectedSB.toString();
     }
+
+    @Test
+    public void checkoutMovieShouldNotBeAvailable() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        movie.checkout();
+        assertFalse(movie.isAvailable());
+    }
 }

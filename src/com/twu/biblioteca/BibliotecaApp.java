@@ -23,7 +23,7 @@ public class BibliotecaApp {
             if (MenuOption.isMeantForBooks(userOption)) {
                 bookListHandler.handleUserOption(userOption);
             }
-            if(MenuOption.LIST_MOVIE.keyMatches(userOption)) {
+            if(MenuOption.isMeantForMovies(userOption)) {
                 movieListHandler.handleUserOption(userOption);
             }
             userOption = menuHandler.getValidMenuOption();

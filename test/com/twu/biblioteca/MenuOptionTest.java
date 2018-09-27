@@ -19,7 +19,7 @@ public class MenuOptionTest {
 
     @Test
     public void shouldReturnTrueIfListBook() {
-        assertTrue(isMeantForBooks("1"));
+        assertTrue(MenuOption.isMeantForBooks("1"));
         assertTrue(LIST_BOOK.keyMatches("1"));
     }
 
@@ -30,7 +30,7 @@ public class MenuOptionTest {
 
     @Test
     public void shouldReturnTrueIfCheckoutBook() {
-        assertTrue(isMeantForBooks("2"));
+        assertTrue(MenuOption.isMeantForBooks("2"));
         assertTrue(CHECKOUT_BOOK.keyMatches("2"));
     }
 
@@ -41,7 +41,7 @@ public class MenuOptionTest {
 
     @Test
     public void shouldReturnTrueIfReturnBook() {
-        assertTrue(isMeantForBooks("3"));
+        assertTrue(MenuOption.isMeantForBooks("3"));
         assertTrue(RETURN_BOOK.keyMatches("3"));
     }
 
@@ -52,17 +52,34 @@ public class MenuOptionTest {
 
     @Test
     public void shouldReturnFalseForOtherOptionThanBook() {
-        assertFalse(isMeantForBooks("q"));
+        assertFalse(MenuOption.isMeantForBooks("q"));
     }
 
     @Test
     public void shouldReturnTrueIfListMovie() {
+        assertTrue(MenuOption.isMeantForMovies("4"));
         assertTrue(LIST_MOVIE.keyMatches("4"));
     }
 
     @Test
     public void shouldReturnFalseIfNotListMovie() {
         assertFalse(LIST_MOVIE.keyMatches("q"));
+    }
+
+    @Test
+    public void shouldReturnTrueIfCheckoutMovie() {
+        assertTrue(MenuOption.isMeantForMovies("5"));
+        assertTrue(CHECKOUT_MOVIE.keyMatches("5"));
+    }
+
+    @Test
+    public void shouldReturnFalseIfNotCheckoutMovie() {
+        assertFalse(CHECKOUT_MOVIE.keyMatches("q"));
+    }
+
+    @Test
+    public void shouldReturnFalseForOtherOptionThanMovie() {
+        assertFalse(MenuOption.isMeantForMovies("q"));
     }
 
 }

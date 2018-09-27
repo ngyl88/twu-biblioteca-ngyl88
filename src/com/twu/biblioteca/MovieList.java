@@ -26,4 +26,14 @@ public class MovieList {
         }
         return sb.toString();
     }
+
+    public boolean checkoutMovieByName(String movieName) {
+        for (Movie movie : movies) {
+            if (movie.getName().equals(movieName) && movie.isAvailable()) {
+                movie.checkout();
+                return true;
+            }
+        }
+        return false;
+    }
 }

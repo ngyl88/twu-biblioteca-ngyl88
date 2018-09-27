@@ -51,4 +51,8 @@ public class Movie {
 
         return sb.toString();
     }
+
+    public void checkout() {
+        this.available = false;
+    }
 }
