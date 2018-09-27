@@ -18,7 +18,7 @@ public class BibliotecaApp {
 
         String userOption = menuHandler.getValidMenuOption();
 
-        while (!MenuOption.isQuit(userOption)) {
+        while (!MenuOption.QUIT.keyMatches(userOption)) {
             if (MenuOption.isMeantForBooks(userOption)) {
                 bookListHandler.handleUserOption(userOption);
             }

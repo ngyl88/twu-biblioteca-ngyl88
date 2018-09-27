@@ -28,13 +28,13 @@ public class BookListHandler {
     // TODO: FUNCTION NOT TESTED (moved from main)
     public void handleUserOption(String userOption) {
 
-        if (MenuOption.isListBook(userOption)) {
+        if (MenuOption.LIST_BOOK.keyMatches(userOption)) {
             displayInformationWithHeader("Book List:", bookList.getBookListDetailsAsString());
 
-        } else if (MenuOption.isCheckoutBook(userOption)) {
+        } else if (MenuOption.CHECKOUT_BOOK.keyMatches(userOption)) {
             handleBookCheckout();
 
-        } else if (MenuOption.isReturnBook(userOption)) {
+        } else if (MenuOption.RETURN_BOOK.keyMatches(userOption)) {
             handleBookReturn();
 
         }

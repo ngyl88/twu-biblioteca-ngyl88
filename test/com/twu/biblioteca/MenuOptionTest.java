@@ -2,66 +2,67 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
+import static com.twu.biblioteca.MenuOption.*;
 import static org.junit.Assert.*;
 
 public class MenuOptionTest {
 
     @Test
     public void shouldReturnTrueIfQuit() {
-        assertTrue(MenuOption.isQuit("q"));
+        assertTrue(QUIT.keyMatches("q"));
     }
 
     @Test
     public void shouldReturnFalseIfNotQuit() {
-        assertFalse(MenuOption.isQuit("1"));
+        assertFalse(QUIT.keyMatches("1"));
     }
 
     @Test
     public void shouldReturnTrueIfListBook() {
-        assertTrue(MenuOption.isMeantForBooks("1"));
-        assertTrue(MenuOption.isListBook("1"));
+        assertTrue(isMeantForBooks("1"));
+        assertTrue(LIST_BOOK.keyMatches("1"));
     }
 
     @Test
     public void shouldReturnFalseIfNotListBook() {
-        assertFalse(MenuOption.isListBook("q"));
+        assertFalse(LIST_BOOK.keyMatches("q"));
     }
 
     @Test
     public void shouldReturnTrueIfCheckoutBook() {
-        assertTrue(MenuOption.isMeantForBooks("2"));
-        assertTrue(MenuOption.isCheckoutBook("2"));
+        assertTrue(isMeantForBooks("2"));
+        assertTrue(CHECKOUT_BOOK.keyMatches("2"));
     }
 
     @Test
     public void shouldReturnFalseIfNotCheckoutBook() {
-        assertFalse(MenuOption.isCheckoutBook("q"));
+        assertFalse(CHECKOUT_BOOK.keyMatches("q"));
     }
 
     @Test
     public void shouldReturnTrueIfReturnBook() {
-        assertTrue(MenuOption.isMeantForBooks("3"));
-        assertTrue(MenuOption.isReturnBook("3"));
+        assertTrue(isMeantForBooks("3"));
+        assertTrue(RETURN_BOOK.keyMatches("3"));
     }
 
     @Test
     public void shouldReturnFalseIfNotReturnBook() {
-        assertFalse(MenuOption.isReturnBook("q"));
+        assertFalse(RETURN_BOOK.keyMatches("q"));
     }
 
     @Test
     public void shouldReturnFalseForOtherOptionThanBook() {
-        assertFalse(MenuOption.isMeantForBooks("q"));
+        assertFalse(isMeantForBooks("q"));
     }
 
     @Test
     public void shouldReturnTrueIfListMovie() {
-        assertTrue(MenuOption.isListMovie("4"));
+        assertTrue(LIST_MOVIE.keyMatches("4"));
     }
 
     @Test
     public void shouldReturnFalseIfNotListMovie() {
-        assertFalse(MenuOption.isListMovie("q"));
+        assertFalse(LIST_MOVIE.keyMatches("q"));
     }
 
 }
