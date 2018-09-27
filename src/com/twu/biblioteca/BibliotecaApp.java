@@ -8,6 +8,7 @@ public class BibliotecaApp {
     private static final MenuHandler menuHandler = new MenuHandler();
 
     private static final BookListHandler bookListHandler = new BookListHandler();
+    private static final MovieListHandler movieListHandler = new MovieListHandler();
 
     public static void main(String[] args) {
 
@@ -21,6 +22,9 @@ public class BibliotecaApp {
         while (!MenuOption.QUIT.keyMatches(userOption)) {
             if (MenuOption.isMeantForBooks(userOption)) {
                 bookListHandler.handleUserOption(userOption);
+            }
+            if(MenuOption.LIST_MOVIE.keyMatches(userOption)) {
+                movieListHandler.handleUserOption(userOption);
             }
             userOption = menuHandler.getValidMenuOption();
         }

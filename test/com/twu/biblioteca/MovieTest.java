@@ -34,6 +34,12 @@ public class MovieTest {
     }
 
     @Test
+    public void newMovieShouldBeAvailable() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        assertTrue(movie.isAvailable());
+    }
+
+    @Test
     public void newMovieShouldHaveRatingUnrated() {
         Movie movie = new Movie(NAME, YEAR, DIRECTOR);
         assertNull(movie.getRating());

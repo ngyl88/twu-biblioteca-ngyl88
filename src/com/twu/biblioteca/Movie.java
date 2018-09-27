@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 public class Movie {
+
     public String getName() {
         return name;
     }
@@ -11,6 +12,10 @@ public class Movie {
 
     public String getDirector() {
         return director;
+    }
+
+    public boolean isAvailable() {
+        return available;
     }
 
     public Integer getRating() {
@@ -26,6 +31,7 @@ public class Movie {
     private final String name;
     private final int year;
     private final String director;
+    private boolean available = true;
     private Integer rating;
 
     public Movie(String name, int year, String director) {
