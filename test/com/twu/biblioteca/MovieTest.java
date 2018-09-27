@@ -59,4 +59,30 @@ public class MovieTest {
         movie.setRating(11);
         assertNull(movie.getRating());
     }
+
+    @Test
+    public void shouldReturnNewMovieDetailsWithUnratedRatingAsString() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        String expected = getDescriptiveStringWithRating("unrated");
+
+        assertEquals(expected, movie.getDetailsAsString());
+    }
+
+    @Test
+    public void shouldReturnMovieDetailsWithCorrectRatingAsString() {
+        Movie movie = new Movie(NAME, YEAR, DIRECTOR);
+        movie.setRating(2);
+        String expected = getDescriptiveStringWithRating("2");
+
+        assertEquals(expected, movie.getDetailsAsString());
+    }
+
+    private String getDescriptiveStringWithRating(String rating) {
+        StringBuilder expectedSB = new StringBuilder();
+        expectedSB.append("- Name: " + NAME);
+        expectedSB.append("\t\t\tYear: " + YEAR);
+        expectedSB.append("\t\t\tDirector: " + DIRECTOR);
+        expectedSB.append("\t\t\tRating: " + rating);
+        return expectedSB.toString();
+    }
 }

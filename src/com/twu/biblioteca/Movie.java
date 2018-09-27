@@ -33,4 +33,16 @@ public class Movie {
         this.year = year;
         this.director = director;
     }
+
+    public String getDetailsAsString() {
+        String ratingAsString = this.rating == null ? "unrated" : this.rating.toString();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("- Name: " + this.name);
+        sb.append("\t\t\tYear: " + this.year);
+        sb.append("\t\t\tDirector: " + this.director);
+        sb.append("\t\t\tRating: " + ratingAsString);
+
+        return sb.toString();
+    }
 }
