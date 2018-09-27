@@ -54,4 +54,14 @@ public class MenuOptionTest {
         assertFalse(MenuOption.isMeantForBooks("q"));
     }
 
+    @Test
+    public void shouldReturnTrueIfListMovie() {
+        assertTrue(MenuOption.isListMovie("4"));
+    }
+
+    @Test
+    public void shouldReturnFalseIfNotListMovie() {
+        assertFalse(MenuOption.isListMovie("q"));
+    }
+
 }

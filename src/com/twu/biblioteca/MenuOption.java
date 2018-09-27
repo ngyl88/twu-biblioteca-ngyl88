@@ -4,6 +4,7 @@ public enum MenuOption {
     LIST_BOOK("1", "List Books"),
     CHECKOUT_BOOK("2", "Checkout Book"),
     RETURN_BOOK("3", "Return Book"),
+    LIST_MOVIE("4", "List Movies"),
     QUIT("q", "Quit");
 
     public static boolean isQuit(String userOption) {
@@ -24,6 +25,10 @@ public enum MenuOption {
 
     public static boolean isMeantForBooks(String userOption) {
         return isListBook(userOption) || isCheckoutBook(userOption) || isReturnBook(userOption);
+    }
+
+    public static boolean isListMovie(String userOption) {
+        return LIST_MOVIE.getOptionKey().equals(userOption);
     }
 
     public String getOptionKey() {
