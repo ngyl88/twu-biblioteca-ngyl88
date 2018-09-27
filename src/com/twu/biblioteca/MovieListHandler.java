@@ -10,9 +10,9 @@ public class MovieListHandler {
     private void handleMovieCheckout() {
         String movieName = getInputFromUser("Please enter movie name: ");
         if (movieList.checkoutMovieByName(movieName)) {
-            promptMessage(MessageHelper.getMessageForSuccessBookCheckout());
+            promptMessage(MessageHelper.getMessageForSuccessCheckout("movie"));
         } else {
-            promptMessage(MessageHelper.getMessageForFailedBookCheckout());
+            promptMessage(MessageHelper.getMessageForFailedCheckout("movie"));
         }
     }
 

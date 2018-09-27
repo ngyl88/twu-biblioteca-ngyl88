@@ -16,13 +16,13 @@ public class MessageHelperTest {
     }
 
     @Test
-    public void shouldReturnMessageForSuccessfulBookCheckout() {
-        assertEquals(MessageHelper.getMessageForSuccessBookCheckout(), "Thank you! Enjoy the book");
+    public void shouldReturnMessageForSuccessfulCheckout() {
+        assertEquals(MessageHelper.getMessageForSuccessCheckout("book"), "Thank you! Enjoy the book");
     }
 
     @Test
-    public void shouldReturnMessageForUnsuccessfulBookCheckout() {
-        assertEquals(MessageHelper.getMessageForFailedBookCheckout(), "That book is not available.");
+    public void shouldReturnMessageForUnsuccessfulCheckout() {
+        assertEquals(MessageHelper.getMessageForFailedCheckout("resource"), "That resource is not available.");
     }
 
     @Test

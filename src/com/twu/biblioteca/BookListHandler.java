@@ -19,9 +19,9 @@ public class BookListHandler {
     private void handleBookCheckout() {
         String bookTitle = getInputFromUser("Please enter book title: ");
         if (bookList.checkoutBookByTitle(bookTitle)) {
-            promptMessage(MessageHelper.getMessageForSuccessBookCheckout());
+            promptMessage(MessageHelper.getMessageForSuccessCheckout("book"));
         } else {
-            promptMessage(MessageHelper.getMessageForFailedBookCheckout());
+            promptMessage(MessageHelper.getMessageForFailedCheckout("book"));
         }
     }
 

@@ -9,12 +9,12 @@ public class MessageHelper {
         return "Select a valid option!";
     }
 
-    public static String getMessageForSuccessBookCheckout() {
-        return "Thank you! Enjoy the book";
+    public static String getMessageForSuccessCheckout(String resourceType) {
+        return "Thank you! Enjoy the " + resourceType;
     }
 
-    public static String getMessageForFailedBookCheckout() {
-        return "That book is not available.";
+    public static String getMessageForFailedCheckout(String resourceType) {
+        return "That " + resourceType + " is not available.";
     }
 
     public static String getMessageForSuccessBookReturn() {
