@@ -4,8 +4,13 @@ import static com.twu.biblioteca.DisplayUtils.displayInformationWithHeader;
 import static com.twu.biblioteca.DisplayUtils.promptMessage;
 import static com.twu.biblioteca.InputUtils.getInputFromUser;
 
-public class BookListHandler {
+public class ResourceHandler {
+
+    private static String RESOURCE_TYPE_BOOK = "book";
+    private static String RESOURCE_TYPE_MOVIE = "movie";
+
     private final BookList bookList = new BookList();
+    private final MovieList movieList = new MovieList();
 
     private void handleBookReturn() {
         String bookTitle = getInputFromUser("Please enter book title: ");
@@ -19,9 +24,18 @@ public class BookListHandler {
     private void handleBookCheckout() {
         String bookTitle = getInputFromUser("Please enter book title: ");
         if (bookList.checkoutBookByTitle(bookTitle)) {
-            promptMessage(MessageHelper.getMessageForSuccessCheckout("book"));
+            promptMessage(MessageHelper.getMessageForSuccessCheckout(RESOURCE_TYPE_BOOK));
         } else {
-            promptMessage(MessageHelper.getMessageForFailedCheckout("book"));
+            promptMessage(MessageHelper.getMessageForFailedCheckout(RESOURCE_TYPE_BOOK));
+        }
+    }
+
+    private void handleMovieCheckout() {
+        String movieName = getInputFromUser("Please enter movie name: ");
+        if (movieList.checkoutMovieByName(movieName)) {
+            promptMessage(MessageHelper.getMessageForSuccessCheckout(RESOURCE_TYPE_MOVIE));
+        } else {
+            promptMessage(MessageHelper.getMessageForFailedCheckout(RESOURCE_TYPE_MOVIE));
         }
     }
 
@@ -37,6 +51,11 @@ public class BookListHandler {
         } else if (MenuOption.RETURN_BOOK.keyMatches(userOption)) {
             handleBookReturn();
 
+        } else if (MenuOption.LIST_MOVIE.keyMatches(userOption)) {
+            displayInformationWithHeader("Movie List:", movieList.getAvailableMovieListDetailsAsString());
+
+        } else if (MenuOption.CHECKOUT_MOVIE.keyMatches(userOption)) {
+            handleMovieCheckout();
         }
 
     }

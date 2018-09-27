@@ -5,28 +5,26 @@ import static com.twu.biblioteca.DisplayUtils.promptMessage;
 
 public class BibliotecaApp {
 
-    private static final MenuHandler menuHandler = new MenuHandler();
+    private static final MenuHandler MENU_HANDLER = new MenuHandler();
 
-    private static final BookListHandler bookListHandler = new BookListHandler();
-    private static final MovieListHandler movieListHandler = new MovieListHandler();
+    private static final ResourceHandler RESOURCE_HANDLER = new ResourceHandler();
 
     public static void main(String[] args) {
 
         promptMessage(MessageHelper.getWelcomeMessage());
-        displayInformationWithHeader("Options:", menuHandler.getOptionListAsString());
+
+        displayInformationWithHeader("Options:", MENU_HANDLER.getOptionListAsString());
 
         initializeApp();
 
-        String userOption = menuHandler.getValidMenuOption();
+        String userOption = MENU_HANDLER.getValidMenuOption();
 
         while (!MenuOption.QUIT.keyMatches(userOption)) {
-            if (MenuOption.isMeantForBooks(userOption)) {
-                bookListHandler.handleUserOption(userOption);
-            }
-            if(MenuOption.isMeantForMovies(userOption)) {
-                movieListHandler.handleUserOption(userOption);
-            }
-            userOption = menuHandler.getValidMenuOption();
+
+            RESOURCE_HANDLER.handleUserOption(userOption);
+
+            userOption = MENU_HANDLER.getValidMenuOption();
+
         }
 
         exitApp();

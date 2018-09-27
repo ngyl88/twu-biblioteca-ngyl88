@@ -8,14 +8,6 @@ public enum MenuOption {
     CHECKOUT_MOVIE("5", "Checkout Movie"),
     QUIT("q", "Quit");
 
-    public static boolean isMeantForBooks(String userOption) {
-        return LIST_BOOK.keyMatches(userOption) || CHECKOUT_BOOK.keyMatches(userOption) || RETURN_BOOK.keyMatches(userOption);
-    }
-
-    public static boolean isMeantForMovies(String userOption) {
-        return LIST_MOVIE.keyMatches(userOption) || CHECKOUT_MOVIE.keyMatches(userOption);
-    }
-
     public boolean keyMatches(String userOption) {
         return this.getOptionKey().equals(userOption);
     }
