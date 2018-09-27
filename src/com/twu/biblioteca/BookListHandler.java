@@ -25,11 +25,11 @@ public class BookListHandler {
         }
     }
 
-    // TODO: FUNCTION NOT TESTED (moved from main)
+    // TODO: FUNCTION NOT TESTED (support main)
     public void handleUserOption(String userOption) {
 
         if (MenuOption.LIST_BOOK.keyMatches(userOption)) {
-            displayInformationWithHeader("Book List:", bookList.getBookListDetailsAsString());
+            displayInformationWithHeader("Book List:", bookList.getAvailableBookListDetailsAsString());
 
         } else if (MenuOption.CHECKOUT_BOOK.keyMatches(userOption)) {
             handleBookCheckout();

@@ -15,7 +15,7 @@ public class BookList {
         books.add(new Book("Book 3", "Author 2", 2010));
     }
 
-    public String getBookListDetailsAsString() {
+    public String getAvailableBookListDetailsAsString() {
         StringBuilder sb = new StringBuilder();
         for (Book book : books) {
             if (book.isAvailable()) {

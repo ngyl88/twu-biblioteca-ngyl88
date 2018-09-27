@@ -15,7 +15,7 @@ public class BookListTest {
     @Test
     public void shouldBeAbleToReturnBookListAsString() {
         BookList bookList = new BookList();
-        assertNotEquals(bookList.getBookListDetailsAsString(), "");
+        assertNotEquals(bookList.getAvailableBookListDetailsAsString(), "");
     }
 
     @Test

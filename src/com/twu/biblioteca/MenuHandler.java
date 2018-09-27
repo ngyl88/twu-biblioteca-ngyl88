@@ -32,7 +32,7 @@ public class MenuHandler {
         return !getOptions().containsKey(userOption);
     }
 
-    // TODO: FUNCTION NOT TESTED (moved from main)
+    // TODO: FUNCTION NOT TESTED (support main)
     public String getValidMenuOption() {
         String userOption = getInputFromUser("Please enter your option: ");
 
