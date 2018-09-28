@@ -23,9 +23,7 @@ public class BibliotecaApp {
 
         while (!MenuOption.QUIT.keyMatches(userOption)) {
 
-            if(MenuOption.LOGIN.keyMatches(userOption)) {
-                USER_MANAGER.handleLogin();
-            }
+            USER_MANAGER.handleUserOption(userOption);
 
             RESOURCE_HANDLER.handleUserOption(userOption, USER_MANAGER.getCurrentUserLibraryNumber());
 

@@ -47,4 +47,17 @@ public class UserManagerTest {
         assertNull(manager.getCurrentUserLibraryNumber());
     }
 
+    @Test
+    public void getUserInformationShouldBeDefinedIfLogin() {
+        UserManager manager = new UserManager();
+        manager.login(VALID_LIBRARY_NUMBER, VALID_PASSWORD);
+        assertNotNull(manager.getCurrentUserInformation());
+    }
+
+    @Test
+    public void getUserInformationShouldBeEmptyStringIfNotLogin() {
+        UserManager manager = new UserManager();
+        assertEquals("", manager.getCurrentUserInformation());
+    }
+
 }

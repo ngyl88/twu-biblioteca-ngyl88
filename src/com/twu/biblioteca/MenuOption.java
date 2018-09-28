@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 public enum MenuOption {
     LOGIN("in", "Login", false),
+    VIEW_USER_INFO("i", "View user information", true),
     LIST_BOOK("1", "List Books", false),
     CHECKOUT_BOOK("2", "Checkout Book", true),
     RETURN_BOOK("3", "Return Book", true),

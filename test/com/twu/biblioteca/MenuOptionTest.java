@@ -78,6 +78,16 @@ public class MenuOptionTest {
     }
 
     @Test
+    public void shouldReturnTrueIfViewUserInformation() {
+        assertTrue(VIEW_USER_INFO.keyMatches("i"));
+    }
+
+    @Test
+    public void shouldReturnFalseIfNotViewUserInformation() {
+        assertFalse(VIEW_USER_INFO.keyMatches("q"));
+    }
+
+    @Test
     public void loginRequiredShouldBeCorrect() {
         assertFalse(LOGIN.isLoginRequired());
         assertFalse(LIST_BOOK.isLoginRequired());
@@ -87,6 +97,7 @@ public class MenuOptionTest {
         assertTrue(CHECKOUT_BOOK.isLoginRequired());
         assertTrue(CHECKOUT_MOVIE.isLoginRequired());
         assertTrue(RETURN_BOOK.isLoginRequired());
+        assertTrue(VIEW_USER_INFO.isLoginRequired());
     }
 
 }

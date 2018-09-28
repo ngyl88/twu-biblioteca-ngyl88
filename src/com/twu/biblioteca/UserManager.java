@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import static com.twu.biblioteca.DisplayUtils.displayInformationWithHeader;
 import static com.twu.biblioteca.DisplayUtils.promptMessage;
 import static com.twu.biblioteca.InputUtils.getInputFromUser;
 
@@ -20,26 +21,45 @@ public class UserManager {
     }
 
     public boolean getLoginStatus() {
-        return this.currentUser != null;
+        return currentUser != null;
     }
 
     public String getCurrentUserLibraryNumber() {
         if (this.currentUser == null) {
             return null;
         }
-        return this.currentUser.getLibraryNumber();
+        return currentUser.getLibraryNumber();
+    }
+
+    public String getCurrentUserInformation() {
+        if (currentUser == null) return "";
+
+        return currentUser.getUserInformationInString();
     }
 
     // TODO: UNIT TEST NOT CREATED (support main)
-    public void handleLogin() {
+    private void handleLogin() {
 
         String libraryNumber = getInputFromUser("Please enter your library number: ");
         String password = getInputFromUser("Please enter your password: ");
 
-        if(login(libraryNumber, password)) {
+        if (login(libraryNumber, password)) {
             promptMessage(MessageHelper.getMessageForSuccessLogin());
         } else {
             promptMessage(MessageHelper.getMessageForFailedLogin());
+        }
+
+    }
+
+    // TODO: UNIT TEST NOT CREATED (support main)
+    public void handleUserOption(String userOption) {
+
+        if (MenuOption.VIEW_USER_INFO.keyMatches(userOption)) {
+            displayInformationWithHeader("User Information:", getCurrentUserInformation());
+
+        } else if (MenuOption.LOGIN.keyMatches(userOption)) {
+            handleLogin();
+
         }
 
     }
