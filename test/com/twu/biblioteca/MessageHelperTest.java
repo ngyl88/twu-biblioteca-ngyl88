@@ -34,4 +34,19 @@ public class MessageHelperTest {
     public void shouldReturnMessageForUnsuccessfulBookReturn() {
         assertEquals(MessageHelper.getMessageForFailedBookReturn(), "That is not a valid book to return.");
     }
+
+    @Test
+    public void shouldReturnMessageForLoginRequired() {
+        assertEquals(MessageHelper.getMessageForLoginRequired(), "Login required!");
+    }
+
+    @Test
+    public void shouldReturnMessageForSuccessLogin() {
+        assertEquals(MessageHelper.getMessageForSuccessLogin(), "Login success!");
+    }
+
+    @Test
+    public void shouldReturnMessageForFailedLogin() {
+        assertEquals(MessageHelper.getMessageForFailedLogin(), "Login failed!");
+    }
 }

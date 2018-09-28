@@ -12,7 +12,9 @@ public class ResourceHandler {
     private final BookList bookList = new BookList();
     private final MovieList movieList = new MovieList();
 
-    private void handleBookReturn() {
+    // TODO: to pass library number into resource
+    // TODO: createInterface, or superclass ?
+    private void handleBookReturn(String userLibraryNumber) {
         String bookTitle = getInputFromUser("Please enter book title: ");
         if (bookList.returnBook(bookTitle)) {
             promptMessage(MessageHelper.getMessageForSuccessBookReturn());
@@ -21,7 +23,7 @@ public class ResourceHandler {
         }
     }
 
-    private void handleBookCheckout() {
+    private void handleBookCheckout(String userLibraryNumber) {
         String bookTitle = getInputFromUser("Please enter book title: ");
         if (bookList.checkoutBookByTitle(bookTitle)) {
             promptMessage(MessageHelper.getMessageForSuccessCheckout(RESOURCE_TYPE_BOOK));
@@ -30,7 +32,7 @@ public class ResourceHandler {
         }
     }
 
-    private void handleMovieCheckout() {
+    private void handleMovieCheckout(String userLibraryNumber) {
         String movieName = getInputFromUser("Please enter movie name: ");
         if (movieList.checkoutMovieByName(movieName)) {
             promptMessage(MessageHelper.getMessageForSuccessCheckout(RESOURCE_TYPE_MOVIE));
@@ -40,22 +42,22 @@ public class ResourceHandler {
     }
 
     // TODO: UNIT TEST NOT CREATED (support main)
-    public void handleUserOption(String userOption) {
+    public void handleUserOption(String userOption, String userLibraryNumber) {
 
         if (MenuOption.LIST_BOOK.keyMatches(userOption)) {
             displayInformationWithHeader("Book List:", bookList.getAvailableBookListDetailsAsString());
 
         } else if (MenuOption.CHECKOUT_BOOK.keyMatches(userOption)) {
-            handleBookCheckout();
+            handleBookCheckout(userLibraryNumber);
 
         } else if (MenuOption.RETURN_BOOK.keyMatches(userOption)) {
-            handleBookReturn();
+            handleBookReturn(userLibraryNumber);
 
         } else if (MenuOption.LIST_MOVIE.keyMatches(userOption)) {
             displayInformationWithHeader("Movie List:", movieList.getAvailableMovieListDetailsAsString());
 
         } else if (MenuOption.CHECKOUT_MOVIE.keyMatches(userOption)) {
-            handleMovieCheckout();
+            handleMovieCheckout(userLibraryNumber);
         }
 
     }

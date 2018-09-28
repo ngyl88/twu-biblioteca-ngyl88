@@ -24,4 +24,16 @@ public class MessageHelper {
     public static String getMessageForFailedBookReturn() {
         return "That is not a valid book to return.";
     }
+
+    public static String getMessageForLoginRequired() {
+        return "Login required!";
+    }
+
+    public static String getMessageForSuccessLogin() {
+        return "Login success!";
+    }
+
+    public static String getMessageForFailedLogin() {
+        return "Login failed!";
+    }
 }

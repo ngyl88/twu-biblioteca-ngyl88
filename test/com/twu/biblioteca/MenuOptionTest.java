@@ -67,4 +67,26 @@ public class MenuOptionTest {
         assertFalse(CHECKOUT_MOVIE.keyMatches("q"));
     }
 
+    @Test
+    public void shouldReturnTrueIfLogin() {
+        assertTrue(LOGIN.keyMatches("in"));
+    }
+
+    @Test
+    public void shouldReturnFalseIfNotLogin() {
+        assertFalse(LOGIN.keyMatches("q"));
+    }
+
+    @Test
+    public void loginRequiredShouldBeCorrect() {
+        assertFalse(LOGIN.isLoginRequired());
+        assertFalse(LIST_BOOK.isLoginRequired());
+        assertFalse(LIST_MOVIE.isLoginRequired());
+        assertFalse(QUIT.isLoginRequired());
+
+        assertTrue(CHECKOUT_BOOK.isLoginRequired());
+        assertTrue(CHECKOUT_MOVIE.isLoginRequired());
+        assertTrue(RETURN_BOOK.isLoginRequired());
+    }
+
 }

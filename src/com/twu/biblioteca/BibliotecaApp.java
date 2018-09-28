@@ -9,6 +9,8 @@ public class BibliotecaApp {
 
     private static final ResourceHandler RESOURCE_HANDLER = new ResourceHandler();
 
+    private static final UserManager USER_MANAGER = new UserManager();
+
     public static void main(String[] args) {
 
         promptMessage(MessageHelper.getWelcomeMessage());
@@ -17,13 +19,17 @@ public class BibliotecaApp {
 
         initializeApp();
 
-        String userOption = MENU_HANDLER.getValidMenuOption();
+        String userOption = MENU_HANDLER.getValidMenuOption(USER_MANAGER.getLoginStatus());
 
         while (!MenuOption.QUIT.keyMatches(userOption)) {
 
-            RESOURCE_HANDLER.handleUserOption(userOption);
+            if(MenuOption.LOGIN.keyMatches(userOption)) {
+                USER_MANAGER.handleLogin();
+            }
 
-            userOption = MENU_HANDLER.getValidMenuOption();
+            RESOURCE_HANDLER.handleUserOption(userOption, USER_MANAGER.getCurrentUserLibraryNumber());
+
+            userOption = MENU_HANDLER.getValidMenuOption(USER_MANAGER.getLoginStatus());
 
         }
 
