@@ -24,7 +24,7 @@ public class BookTest {
         String expected = expectedSB.toString();
 
         Book book = createBookForTest();
-        assertEquals(book.getBookDetails(), expected);
+        assertEquals(book.getDetailsAsString(), expected);
     }
 
     @Test
@@ -36,17 +36,31 @@ public class BookTest {
     @Test
     public void checkoutBookShouldNotBeAvailable() {
         Book book = createBookForTest();
-        book.checkout();
+        book.checkout("");
         assertFalse(book.isAvailable());
     }
 
     @Test
     public void returnedBookShouldBeAvailable() {
         Book book = createBookForTest();
-        book.checkout();
+        book.checkout("");
 
         book.returned();
         assertTrue(book.isAvailable());
+    }
+
+    @Test
+    public void checkoutBookShouldHaveCorrectCheckoutTo() {
+        Book book = createBookForTest();
+
+        book.checkout("abc-2018");
+        assertEquals("abc-2018", book.getCheckoutTo());
+    }
+
+    @Test
+    public void newBookShouldHaveNullAsCheckoutTo() {
+        Book book = createBookForTest();
+        assertNull(book.getCheckoutTo());
     }
 
     private Book createBookForTest() {

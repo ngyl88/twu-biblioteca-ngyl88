@@ -95,7 +95,7 @@ public class MovieTest {
     @Test
     public void checkoutMovieShouldNotBeAvailable() {
         Movie movie = new Movie(NAME, YEAR, DIRECTOR);
-        movie.checkout();
+        movie.checkout("");
         assertFalse(movie.isAvailable());
     }
 }

@@ -12,11 +12,10 @@ public class ResourceHandler {
     private final BookList bookList = new BookList();
     private final MovieList movieList = new MovieList();
 
-    // TODO: to pass library number into resource
-    // TODO: createInterface, or superclass ?
-    private void handleBookReturn(String userLibraryNumber) {
+    // TODO: how to reduce duplication ?
+    private void handleBookReturn() {
         String bookTitle = getInputFromUser("Please enter book title: ");
-        if (bookList.returnBook(bookTitle)) {
+        if (bookList.returnResource(bookTitle)) {
             promptMessage(MessageHelper.getMessageForSuccessBookReturn());
         } else {
             promptMessage(MessageHelper.getMessageForFailedBookReturn());
@@ -25,7 +24,7 @@ public class ResourceHandler {
 
     private void handleBookCheckout(String userLibraryNumber) {
         String bookTitle = getInputFromUser("Please enter book title: ");
-        if (bookList.checkoutBookByTitle(bookTitle)) {
+        if (bookList.checkout(bookTitle, userLibraryNumber)) {
             promptMessage(MessageHelper.getMessageForSuccessCheckout(RESOURCE_TYPE_BOOK));
         } else {
             promptMessage(MessageHelper.getMessageForFailedCheckout(RESOURCE_TYPE_BOOK));
@@ -34,7 +33,7 @@ public class ResourceHandler {
 
     private void handleMovieCheckout(String userLibraryNumber) {
         String movieName = getInputFromUser("Please enter movie name: ");
-        if (movieList.checkoutMovieByName(movieName)) {
+        if (movieList.checkout(movieName, userLibraryNumber)) {
             promptMessage(MessageHelper.getMessageForSuccessCheckout(RESOURCE_TYPE_MOVIE));
         } else {
             promptMessage(MessageHelper.getMessageForFailedCheckout(RESOURCE_TYPE_MOVIE));
@@ -45,16 +44,16 @@ public class ResourceHandler {
     public void handleUserOption(String userOption, String userLibraryNumber) {
 
         if (MenuOption.LIST_BOOK.keyMatches(userOption)) {
-            displayInformationWithHeader("Book List:", bookList.getAvailableBookListDetailsAsString());
+            displayInformationWithHeader("Book List:", bookList.getAvailableResourcesInDescriptiveString());
 
         } else if (MenuOption.CHECKOUT_BOOK.keyMatches(userOption)) {
             handleBookCheckout(userLibraryNumber);
 
         } else if (MenuOption.RETURN_BOOK.keyMatches(userOption)) {
-            handleBookReturn(userLibraryNumber);
+            handleBookReturn();
 
         } else if (MenuOption.LIST_MOVIE.keyMatches(userOption)) {
-            displayInformationWithHeader("Movie List:", movieList.getAvailableMovieListDetailsAsString());
+            displayInformationWithHeader("Movie List:", movieList.getAvailableResourcesInDescriptiveString());
 
         } else if (MenuOption.CHECKOUT_MOVIE.keyMatches(userOption)) {
             handleMovieCheckout(userLibraryNumber);

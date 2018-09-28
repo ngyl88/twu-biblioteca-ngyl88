@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class Movie {
+public class Movie extends AbstractResource {
 
     public String getName() {
         return name;
@@ -12,10 +12,6 @@ public class Movie {
 
     public String getDirector() {
         return director;
-    }
-
-    public boolean isAvailable() {
-        return available;
     }
 
     public Integer getRating() {
@@ -31,7 +27,6 @@ public class Movie {
     private final String name;
     private final int year;
     private final String director;
-    private boolean available = true;
     private Integer rating;
 
     public Movie(String name, int year, String director) {
@@ -40,6 +35,7 @@ public class Movie {
         this.director = director;
     }
 
+    @Override
     public String getDetailsAsString() {
         String ratingAsString = this.rating == null ? "unrated" : this.rating.toString();
 
@@ -52,7 +48,8 @@ public class Movie {
         return sb.toString();
     }
 
-    public void checkout() {
-        this.available = false;
+    @Override
+    public String getIdentifier() {
+        return this.getName();
     }
 }

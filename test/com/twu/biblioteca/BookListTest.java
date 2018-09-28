@@ -9,13 +9,13 @@ public class BookListTest {
     @Test
     public void shouldLoadBooksWhenConstructed() {
         BookList bookList = new BookList();
-        assertTrue(bookList.getBooks().size() > 0);
+        assertTrue(bookList.getResources().size() > 0);
     }
 
     @Test
     public void shouldBeAbleToReturnBookListAsString() {
         BookList bookList = new BookList();
-        assertNotEquals(bookList.getAvailableBookListDetailsAsString(), "");
+        assertNotEquals(bookList.getAvailableResourcesInDescriptiveString(), "");
     }
 
     @Test
@@ -23,7 +23,7 @@ public class BookListTest {
         BookList bookList = new BookList();
         Book firstBook = getFirstAvailableBook(bookList);
 
-        bookList.checkoutBookByTitle(firstBook.getTitle());
+        bookList.checkout(firstBook.getTitle(), "");
         assertFalse(firstBook.isAvailable());
     }
 
@@ -31,7 +31,7 @@ public class BookListTest {
     public void stringRepresentationShouldNotContainUnavailableBook() {
         BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
-        assertFalse(bookList.getAvailableBookListDetailsAsString().contains(bookCheckedOut.getTitle()));
+        assertFalse(bookList.getAvailableResourcesInDescriptiveString().contains(bookCheckedOut.getTitle()));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class BookListTest {
         BookList bookList = new BookList();
         Book firstBook = getFirstAvailableBook(bookList);
 
-        boolean success = bookList.checkoutBookByTitle(firstBook.getTitle());
+        boolean success = bookList.checkout(firstBook.getTitle(), "");
         assertTrue(success);
     }
 
@@ -47,7 +47,7 @@ public class BookListTest {
     public void shouldReturnFalseUponUnsuccessfulCheckoutOfAnInvalidBook() {
         BookList bookList = new BookList();
 
-        boolean success = bookList.checkoutBookByTitle("Some Invalid Book");
+        boolean success = bookList.checkout("Some Invalid Book", "");
         assertFalse(success);
     }
 
@@ -56,7 +56,7 @@ public class BookListTest {
         BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
 
-        boolean success = bookList.checkoutBookByTitle(bookCheckedOut.getTitle());
+        boolean success = bookList.checkout(bookCheckedOut.getTitle(), "");
         assertFalse(success);
     }
 
@@ -65,7 +65,7 @@ public class BookListTest {
         BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
 
-        bookList.returnBook(bookCheckedOut.getTitle());
+        bookList.returnResource(bookCheckedOut.getTitle());
         assertTrue(bookCheckedOut.isAvailable());
     }
 
@@ -74,7 +74,7 @@ public class BookListTest {
         BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
 
-        boolean success = bookList.returnBook(bookCheckedOut.getTitle());
+        boolean success = bookList.returnResource(bookCheckedOut.getTitle());
         assertTrue(success);
     }
 
@@ -82,7 +82,7 @@ public class BookListTest {
     public void shouldReturnFalseUponUnsuccessfulReturnOfAnInvalidBook() {
         BookList bookList = new BookList();
 
-        boolean success = bookList.returnBook("Some Invalid Book");
+        boolean success = bookList.returnResource("Some Invalid Book");
         assertFalse(success);
     }
 
@@ -90,23 +90,23 @@ public class BookListTest {
     public void shouldReturnFalseIfAttemptedToRepeatedlyReturnABook() {
         BookList bookList = new BookList();
         Book bookCheckedOut = generateCheckedOutBookFromBookList(bookList);
-        bookList.returnBook(bookCheckedOut.getTitle());
+        bookList.returnResource(bookCheckedOut.getTitle());
 
-        boolean success = bookList.returnBook(bookCheckedOut.getTitle());
+        boolean success = bookList.returnResource(bookCheckedOut.getTitle());
         assertFalse(success);
     }
 
     private Book generateCheckedOutBookFromBookList(BookList bookList) {
         Book firstBook = getFirstAvailableBook(bookList);
 
-        bookList.checkoutBookByTitle(firstBook.getTitle());
+        bookList.checkout(firstBook.getTitle(), "");
         assertFalse(firstBook.isAvailable());
 
         return firstBook;
     }
 
     private Book getFirstAvailableBook(BookList bookList) {
-        Book firstBook = bookList.getBooks().get(0);
+        Book firstBook = bookList.getResources().get(0);
         assertTrue(firstBook.isAvailable());
 
         return firstBook;

@@ -9,13 +9,13 @@ public class MovieListTest {
     @Test
     public void shouldLoadMoviesWhenConstructed() {
         MovieList movieList = new MovieList();
-        assertTrue(movieList.getMovies().size() > 0);
+        assertTrue(movieList.getResources().size() > 0);
     }
 
     @Test
     public void stringRepresentationReturnedForMovieListShouldNotBeEmptyString() {
         MovieList movieList = new MovieList();
-        assertNotEquals(movieList.getAvailableMovieListDetailsAsString(), "");
+        assertNotEquals(movieList.getAvailableResourcesInDescriptiveString(), "");
     }
 
     @Test
@@ -23,7 +23,7 @@ public class MovieListTest {
         MovieList movieList = new MovieList();
         Movie firstMovie = getFirstAvailableMovie(movieList);
 
-        assertTrue(movieList.getAvailableMovieListDetailsAsString().contains(firstMovie.getName()));
+        assertTrue(movieList.getAvailableResourcesInDescriptiveString().contains(firstMovie.getName()));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class MovieListTest {
         MovieList movieList = new MovieList();
         Movie firstMovie = getFirstAvailableMovie(movieList);
 
-        movieList.checkoutMovieByName(firstMovie.getName());
+        movieList.checkout(firstMovie.getName(), "");
         assertFalse(firstMovie.isAvailable());
     }
 
@@ -39,9 +39,9 @@ public class MovieListTest {
     public void stringRepresentationShouldNotContainUnavailableMovie() {
         MovieList movieList = new MovieList();
         Movie firstMovie = getFirstAvailableMovie(movieList);
-        movieList.checkoutMovieByName(firstMovie.getName());
+        movieList.checkout(firstMovie.getName(), "");
 
-        assertFalse(movieList.getAvailableMovieListDetailsAsString().contains(firstMovie.getName()));
+        assertFalse(movieList.getAvailableResourcesInDescriptiveString().contains(firstMovie.getName()));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class MovieListTest {
         MovieList movieList = new MovieList();
         Movie firstMovie = getFirstAvailableMovie(movieList);
 
-        boolean success = movieList.checkoutMovieByName(firstMovie.getName());
+        boolean success = movieList.checkout(firstMovie.getName(), "");
         assertTrue(success);
     }
 
@@ -57,7 +57,7 @@ public class MovieListTest {
     public void shouldReturnFalseUponUnsuccessfulCheckout() {
         MovieList movieList = new MovieList();
 
-        boolean success = movieList.checkoutMovieByName("Invalid Movie Name");
+        boolean success = movieList.checkout("Invalid Movie Name", "");
         assertFalse(success);
     }
 
@@ -65,14 +65,31 @@ public class MovieListTest {
     public void shouldReturnFalseWhenAttemptForConsecutiveCheckout() {
         MovieList movieList = new MovieList();
         Movie firstMovie = getFirstAvailableMovie(movieList);
-        movieList.checkoutMovieByName(firstMovie.getName());
+        movieList.checkout(firstMovie.getName(), "");
 
-        boolean success = movieList.checkoutMovieByName(firstMovie.getName());
+        boolean success = movieList.checkout(firstMovie.getName(), "");
         assertFalse(success);
     }
 
+    @Test
+    public void checkoutMovieShouldHaveCorrectCheckoutTo() {
+        MovieList movieList = new MovieList();
+        Movie firstMovie = getFirstAvailableMovie(movieList);
+
+        firstMovie.checkout("abc-2018");
+        assertEquals("abc-2018", firstMovie.getCheckoutTo());
+    }
+
+    @Test
+    public void newMovieShouldHaveNullAsCheckoutTo() {
+        MovieList movieList = new MovieList();
+        Movie firstMovie = getFirstAvailableMovie(movieList);
+
+        assertNull(firstMovie.getCheckoutTo());
+    }
+
     private Movie getFirstAvailableMovie(MovieList movieList) {
-        Movie firstMovie = movieList.getMovies().get(0);
+        Movie firstMovie = movieList.getResources().get(0);
         assertTrue(firstMovie.isAvailable());
 
         return firstMovie;

@@ -2,9 +2,10 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 
-public class MovieList {
+public class MovieList extends AbstractResources {
 
-    public ArrayList<Movie> getMovies() {
+    @Override
+    public ArrayList<Movie> getResources() {
         return movies;
     }
 
@@ -14,26 +15,5 @@ public class MovieList {
         movies.add(new Movie("Movie 1", 2008, "Director 1"));
         movies.add(new Movie("Movie 2", 2009, "Director 1"));
         movies.add(new Movie("Movie 3", 2010, "Director 2"));
-    }
-
-    public String getAvailableMovieListDetailsAsString() {
-        StringBuilder sb = new StringBuilder();
-        for (Movie movie : movies) {
-            if (movie.isAvailable()) {
-                sb.append(movie.getDetailsAsString());
-                sb.append(System.lineSeparator());
-            }
-        }
-        return sb.toString();
-    }
-
-    public boolean checkoutMovieByName(String movieName) {
-        for (Movie movie : movies) {
-            if (movie.getName().equals(movieName) && movie.isAvailable()) {
-                movie.checkout();
-                return true;
-            }
-        }
-        return false;
     }
 }

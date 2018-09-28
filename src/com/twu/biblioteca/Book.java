@@ -1,10 +1,6 @@
 package com.twu.biblioteca;
 
-public class Book {
-
-    public boolean isAvailable() {
-        return available;
-    }
+public class Book extends AbstractResource {
 
     public String getTitle() {
         return title;
@@ -13,7 +9,6 @@ public class Book {
     private final String title;
     private final String author;
     private final int yearPublished;
-    private boolean available = true;
 
     public Book(String title, String author, int yearPublished) {
         this.title = title;
@@ -21,7 +16,8 @@ public class Book {
         this.yearPublished = yearPublished;
     }
 
-    public String getBookDetails() {
+    @Override
+    public String getDetailsAsString() {
         StringBuilder expectedSB = new StringBuilder();
         expectedSB.append("- Title: " + this.title);
         expectedSB.append("\t\t\tAuthor: " + this.author);
@@ -30,11 +26,8 @@ public class Book {
         return expectedSB.toString();
     }
 
-    public void checkout() {
-        this.available = false;
-    }
-
-    public void returned() {
-        this.available = true;
+    @Override
+    public String getIdentifier() {
+        return this.title;
     }
 }
