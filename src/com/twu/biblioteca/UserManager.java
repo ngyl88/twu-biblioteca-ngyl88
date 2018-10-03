@@ -51,6 +51,13 @@ public class UserManager {
 
     }
 
+    // TODO: to add unit test (refactored)
+    public boolean isUserOptionInScope(String userOption) {
+
+        return MenuOption.LOGIN.keyMatches(userOption) || MenuOption.VIEW_USER_INFO.keyMatches(userOption);
+
+    }
+
     // TODO: UNIT TEST NOT CREATED (support main)
     public void handleUserOption(String userOption) {
 

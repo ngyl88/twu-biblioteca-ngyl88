@@ -20,11 +20,31 @@ public class BibliotecaApp {
         System.exit(0);
     }
 
+    private void handleUserOption(String userOption) {
+
+        if (MenuOption.LIST_OPTIONS.keyMatches(userOption)) {
+
+            boolean loggedIn = userManager.getLoginStatus();
+            displayInformationWithHeader("Options:", menuHandler.getOptionListAsString(loggedIn));
+
+        } else if (userManager.isUserOptionInScope(userOption)) {
+
+            userManager.handleUserOption(userOption);
+
+        } else if (resourceHandler.isUserOptionInScope(userOption)) {
+
+            String userLibraryNumber = userManager.getCurrentUserLibraryNumber();
+            resourceHandler.handleUserOption(userOption, userLibraryNumber);
+
+        }
+
+    }
+
     private void run() {
 
         promptMessage(MessageHelper.getWelcomeMessage());
 
-        displayInformationWithHeader("Options:", menuHandler.getOptionListAsString());
+        displayInformationWithHeader("Options:", menuHandler.getOptionListAsString(false));
 
         initialize();
 
@@ -32,9 +52,7 @@ public class BibliotecaApp {
 
         while (!MenuOption.QUIT.keyMatches(userOption)) {
 
-            userManager.handleUserOption(userOption);
-
-            resourceHandler.handleUserOption(userOption, userManager.getCurrentUserLibraryNumber());
+            handleUserOption(userOption);
 
             userOption = menuHandler.getValidMenuOption(userManager.getLoginStatus());
 

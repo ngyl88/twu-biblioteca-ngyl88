@@ -6,13 +6,14 @@ import static com.twu.biblioteca.InputUtils.getInputFromUser;
 
 public class ResourceHandler {
 
-    private static String RESOURCE_TYPE_BOOK = "book";
-    private static String RESOURCE_TYPE_MOVIE = "movie";
+    private static final String RESOURCE_TYPE_BOOK = "book";
+    private static final String RESOURCE_TYPE_MOVIE = "movie";
 
     private final BookList bookList = new BookList();
     private final MovieList movieList = new MovieList();
 
     // TODO: how to reduce duplication ?
+    // TODO: how to test io stream ?
     private void handleBookReturn() {
         String bookTitle = getInputFromUser("Please enter book title: ");
         if (bookList.returnResource(bookTitle)) {
@@ -38,6 +39,14 @@ public class ResourceHandler {
         } else {
             promptMessage(MessageHelper.getMessageForFailedCheckout(RESOURCE_TYPE_MOVIE));
         }
+    }
+
+    // TODO: to add unit test (refactored)
+    public boolean isUserOptionInScope(String userOption) {
+
+        return MenuOption.LIST_BOOK.keyMatches(userOption) || MenuOption.CHECKOUT_BOOK.keyMatches(userOption) || MenuOption.RETURN_BOOK.keyMatches(userOption)
+                || MenuOption.LIST_MOVIE.keyMatches(userOption) || MenuOption.CHECKOUT_MOVIE.keyMatches(userOption);
+
     }
 
     // TODO: UNIT TEST NOT CREATED (support main)
