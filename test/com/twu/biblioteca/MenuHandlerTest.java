@@ -17,12 +17,6 @@ public class MenuHandlerTest {
     }
 
     @Test
-    public void shouldBeAbleToReturnOptionListAsString() {
-        MenuHandler menuHandler = new MenuHandler();
-        assertNotEquals(menuHandler.getOptionListAsString(), "");
-    }
-
-    @Test
     public void invalidOptionShouldBeInvalid() {
         MenuHandler menuHandler = new MenuHandler();
         assertFalse(menuHandler.isValidOptionBasedOnLoginStatus("XYZ", true));
@@ -62,8 +56,20 @@ public class MenuHandlerTest {
     }
 
     @Test
-    public void dummyTestForGetValidMenuOption() {
-        assertTrue(true);
+    public void shouldBeAbleToReturnOptionListWithoutViewUserWhenNotLogin() {
+        MenuHandler menuHandler = new MenuHandler();
+
+        String optionInfo = menuHandler.getOptionListAsString(false);
+        assertNotEquals(optionInfo, "");
+        assertFalse(optionInfo.contains("View user"));
+    }
+
+    @Test
+    public void shouldBeAbleToReturnOptionListWithViewUserWhenLoggedIn() {
+        MenuHandler menuHandler = new MenuHandler();
+
+        String optionInfo = menuHandler.getOptionListAsString(true);
+        assertTrue(optionInfo.contains("View user"));
     }
 
 }

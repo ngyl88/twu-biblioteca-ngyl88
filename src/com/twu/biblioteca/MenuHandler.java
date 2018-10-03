@@ -19,9 +19,11 @@ public class MenuHandler {
         }
     }
 
-    public String getOptionListAsString() {
+    public String getOptionListAsString(boolean loginStatus) {
         StringBuilder sb = new StringBuilder();
         getOptions().forEach((k, menuOption) -> {
+            if (menuOption == MenuOption.VIEW_USER_INFO && !loginStatus) return;
+
             sb.append(String.format("%3s%s%s", k, " - ", menuOption.getOptionDescription()));
             sb.append(System.lineSeparator());
         });
