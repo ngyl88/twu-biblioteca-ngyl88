@@ -5,41 +5,48 @@ import static com.twu.biblioteca.DisplayUtils.promptMessage;
 
 public class BibliotecaApp {
 
-    private static final MenuHandler MENU_HANDLER = new MenuHandler();
+    private MenuHandler menuHandler = new MenuHandler();
 
-    private static final ResourceHandler RESOURCE_HANDLER = new ResourceHandler();
+    private ResourceHandler resourceHandler = new ResourceHandler();
 
-    private static final UserManager USER_MANAGER = new UserManager();
+    private UserManager userManager = new UserManager();
 
-    public static void main(String[] args) {
-
-        promptMessage(MessageHelper.getWelcomeMessage());
-
-        displayInformationWithHeader("Options:", MENU_HANDLER.getOptionListAsString());
-
-        initializeApp();
-
-        String userOption = MENU_HANDLER.getValidMenuOption(USER_MANAGER.getLoginStatus());
-
-        while (!MenuOption.QUIT.keyMatches(userOption)) {
-
-            USER_MANAGER.handleUserOption(userOption);
-
-            RESOURCE_HANDLER.handleUserOption(userOption, USER_MANAGER.getCurrentUserLibraryNumber());
-
-            userOption = MENU_HANDLER.getValidMenuOption(USER_MANAGER.getLoginStatus());
-
-        }
-
-        exitApp();
+    private void initialize() {
+        InputUtils.openStream();
     }
 
-    private static void exitApp() {
+    private void exit() {
         InputUtils.closeStream();
         System.exit(0);
     }
 
-    private static void initializeApp() {
-        InputUtils.openStream();
+    private void run() {
+
+        promptMessage(MessageHelper.getWelcomeMessage());
+
+        displayInformationWithHeader("Options:", menuHandler.getOptionListAsString());
+
+        initialize();
+
+        String userOption = menuHandler.getValidMenuOption(userManager.getLoginStatus());
+
+        while (!MenuOption.QUIT.keyMatches(userOption)) {
+
+            userManager.handleUserOption(userOption);
+
+            resourceHandler.handleUserOption(userOption, userManager.getCurrentUserLibraryNumber());
+
+            userOption = menuHandler.getValidMenuOption(userManager.getLoginStatus());
+
+        }
+
+        exit();
+
+    }
+
+    public static void main(String[] args) {
+
+        new BibliotecaApp().run();
+
     }
 }
